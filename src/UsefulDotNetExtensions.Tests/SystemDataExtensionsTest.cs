@@ -1,12 +1,13 @@
 using System.Data;
 using Xunit;
 using UsefulDotNetExtensions.SystemData;
+using System;
 
 namespace UsefulDotNetExtensions.Tests
 {
     public class SystemDataExtensionsTest
     {
-        private DataRow CreateNewRow(string columnName, int value) 
+        private DataRow CreateNewRow<T>(string columnName, T value)
         {
             DataTable dataTable = new DataTable();
 
@@ -55,6 +56,18 @@ namespace UsefulDotNetExtensions.Tests
             DataRow row = dataTable.NewRow();
 
             Assert.False(row.ParseBoolOrDefault(columnName, false));
+        }
+
+        [Fact]
+        public void ParseDateTimeTest() 
+        {
+            string columnName = "BirthdayDate";
+
+            var currentDateTime = DateTime.Today;
+
+            var row = CreateNewRow(columnName, currentDateTime);
+
+            Assert.True(DateTime.Compare(row.ParseDateTime(columnName), currentDateTime) == 0);
         }
     }
 }

@@ -37,7 +37,16 @@ namespace UsefulDotNetExtensions.SystemData
             }
         }
 
-        private static bool ValidateAndThrowExecption(KeyValuePair<string, DataRow> map, Func<bool> method)
+        public static DateTime ParseDateTime(this DataRow row, string columnName) 
+        {
+            var kvp = new KeyValuePair<string, DataRow>(columnName, row);
+            return ValidateAndThrowExecption(kvp, () => 
+            {
+                return DateTime.Parse(row[columnName].ToString());
+            });
+        }
+
+        private static T ValidateAndThrowExecption<T>(KeyValuePair<string, DataRow> map, Func<T> method)
         {
             if (map.Value == null) throw new ArgumentNullException(nameof(map.Value));
             if (map.Key == null) throw new ArgumentException(nameof(map.Key));
