@@ -9,6 +9,8 @@ env:
     PROJECT_PATH: 'src/UsefulDotNetExtensions.Core/UsefulDotNetExtensions.Core.csproj'
     PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
     NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
+    
+    
 jobs:
     deploy: 
         name: 'Deploy'
@@ -20,7 +22,10 @@ jobs:
         - name: 'Install dotnet'
           uses: actions/setup-dotnet@v1
           with:
-            dotnet-version: 'standard'
+            dotnet-version: |
+            3.1.x
+            5.0.x
+            6.0
             
         - name: 'Restore packages'
           run: dotnet restore ${{ env.PROJECT_PATH }}
