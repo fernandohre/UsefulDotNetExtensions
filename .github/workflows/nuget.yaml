@@ -1,0 +1,24 @@
+name: "Deploy to Nuget"
+
+on: ["push"]
+
+env:
+    PROJECT_PATH: 'src/UsefulDotNetExtensions.Core/UsefulDotNetExtensions.Core.csproj'
+
+jobs:
+    deploy: 
+        name: 'Deploy'
+        runs-on: 'windows-latest'
+        steps:
+        - name: 'Checkout'
+          uses: actions/checkout@v2
+          
+        - name: 'Install dotnet'
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 'standard'
+            
+        - name: 'Restore packages'
+          run: dotnet restore ${{ env.PROJECT_PATH }}
+        - name: 'Build project'
+          run: dotnet restore ${{ env.PROJECT_PATH }} --no-restore --Configuration Release

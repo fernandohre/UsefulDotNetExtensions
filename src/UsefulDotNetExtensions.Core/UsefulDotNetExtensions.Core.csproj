@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Fernando Callata</Authors>
+    <Description>This is a library that help you parse values from object derivated of System.Data package and contains extensions methods for json, strings and lists.</Description>
+    <RepositoryUrl>https://github.com/fernandohre/UsefulDotNetExtensions/</RepositoryUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
 </Project>
