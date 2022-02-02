@@ -1,6 +1,6 @@
 using System.Data;
 using Xunit;
-using UsefulDotNetExtensions.SystemData;
+using UsefulDotNetExtensions.Core;
 using System;
 
 namespace UsefulDotNetExtensions.Tests

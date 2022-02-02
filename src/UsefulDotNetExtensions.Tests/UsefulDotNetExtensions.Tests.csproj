@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UsefulDotNetExtensions.SystemData\UsefulDotNetExtensions.SystemData.csproj" />
+    <ProjectReference Include="..\UsefulDotNetExtensions.SystemData\UsefulDotNetExtensions.Core.csproj" />
   </ItemGroup>
 
 </Project>

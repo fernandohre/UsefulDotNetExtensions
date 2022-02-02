@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 
-namespace UsefulDotNetExtensions.SystemData
+namespace UsefulDotNetExtensions.Core
 {
     public static class DataRowsExtensions
     {

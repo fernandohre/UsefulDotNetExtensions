@@ -2,3 +2,5 @@
 bin/
 obj/
 packages/
+nuget.config/
+UsefulDotNetExtensions.Core/nuget.config
