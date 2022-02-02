@@ -1,11 +1,14 @@
 name: "Deploy to Nuget"
 
-on: ["push"]
+on: 
+    push:
+        tags:
+        - 'v*'
 
 env:
     PROJECT_PATH: 'src/UsefulDotNetExtensions.Core/UsefulDotNetExtensions.Core.csproj'
-    PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
-    NUGET_SOURCE_URL: ''https://api.nuget.org/v3/index.json''
+    PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+    NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
 jobs:
     deploy: 
         name: 'Deploy'
