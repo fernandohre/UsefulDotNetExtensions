@@ -4,7 +4,8 @@ on: ["push"]
 
 env:
     PROJECT_PATH: 'src/UsefulDotNetExtensions.Core/UsefulDotNetExtensions.Core.csproj'
-
+    PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
+    NUGET_SOURCE_URL: ''https://api.nuget.org/v3/index.json''
 jobs:
     deploy: 
         name: 'Deploy'
@@ -22,3 +23,9 @@ jobs:
           run: dotnet restore ${{ env.PROJECT_PATH }}
         - name: 'Build project'
           run: dotnet restore ${{ env.PROJECT_PATH }} --no-restore --Configuration Release
+          
+        - name: 'Pack project'
+          run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --Configuration Release --include-symbols ${{env.PACKAGE_OUTPUT_DIRECTORY}}
+          
+        - name: 'Push package'
+          run: dotnet nuget push ${{env.PACKAGE_OUTPUT_DIRECTORY}}\*.nupkg -k ${{secrets.NUGET_AUTH_TOKEN}} -s ${{env.NUGET_SOURCE_URL}}
